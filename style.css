@@ -1,13 +1,59 @@
+/* Layout CSS */
+
+header {
+    text-align: center;
+}
+
+.main-layout {
+    display: flex;
+    flex-grow: 1;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+main {
+    flex: 1 1;
+}
+
+.container {
+    display: flex;
+    gap: 1rem;
+}
+
+.settings {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1;
+    gap: 2rem;
+}
+
+.canvas-container {
+    flex: 4 1;
+    display: flex;
+    place-items: center;
+    justify-content: center;
+}
+
+.canvas {
+    display: grid;
+    grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+}
+
+.cell {
+ width: 32px;
+ height: 32px;
+}
+
+
 * {
 	box-sizing: border-box;
 	margin: 0;
-	padding: 0;
 	font-family: "Manrope", sans-serif;
 }
 
 :root {
 	--ff: "Manrope", sans-serif;
-	--h1: 700 1.5rem/1.2em var(--ff);
+	--h1: 700 2.5rem/1.2em var(--ff);
 	--h2: 700 1.25rem/1.4em var(--ff);
 	--h3: 700 1.125rem/1.4em var(--ff);
 	--p: 400 1rem/1.6em var(--ff);
@@ -50,9 +96,19 @@ body.light {
 }
 
 body {
-    margin: 1rem auto;
-    max-width: min(90vw, 1200px);
+    margin: 0 auto;
+    max-width: 1200px;
     background: var(--bg-dark);
     color: var(--text-muted);
 }
 
+h1 {
+    font: var(--h1);
+    color: var(--text);
+    padding: 1.5rem;
+}
+
+div {
+    padding: 8px;
+	border: dashed 1px #fff;
+}
