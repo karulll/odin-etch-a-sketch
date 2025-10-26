@@ -1,49 +1,59 @@
-/* Layout CSS */
+/* Layout*/
+html {
+	height: 100%;
+}
 
-header {
-    text-align: center;
+body {
+	margin: 0 auto;
+	max-width: 800px;
+	height: 100%;
 }
 
 .main-layout {
-    display: flex;
-    flex-grow: 1;
-    flex-wrap: wrap;
-    gap: 2rem;
-}
-
-main {
-    flex: 1 1;
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	justify-content: center;
+	gap: 1.5rem;
+	flex-wrap: wrap;
 }
 
 .container {
-    display: flex;
-    gap: 1rem;
+	display: flex;
 }
 
 .settings {
-    display: flex;
-    flex-direction: column;
-    flex: 1 1;
-    gap: 2rem;
+	display: flex;
+	flex-direction: column;
+	flex: 1 1 0;
+	gap: 1rem;
+	place-items: center;
+	justify-content: center;
 }
 
 .canvas-container {
-    flex: 4 1;
-    display: flex;
-    place-items: center;
-    justify-content: center;
+	flex: 2 1 0;
+	display: flex;
+	place-items: center;
+	justify-content: center;
+	flex-direction: column;
 }
 
 .canvas {
-    display: grid;
-    grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+	width: 520px;
+	height: 520px;
+	display: grid;
+	grid-template: repeat(4, 1fr) / repeat(4, 1fr);
 }
 
-.cell {
- width: 32px;
- height: 32px;
+.footer {
+	display: flex;
+	place-items: center;
+	justify-content: center;
+	padding-top: 1rem;
 }
 
+/* Styling */
 
 * {
 	box-sizing: border-box;
@@ -53,42 +63,57 @@ main {
 
 :root {
 	--ff: "Manrope", sans-serif;
-	--h1: 700 2.5rem/1.2em var(--ff);
-	--h2: 700 1.25rem/1.4em var(--ff);
-	--h3: 700 1.125rem/1.4em var(--ff);
+	--h1: 700 2rem var(--ff);
 	--p: 400 1rem/1.6em var(--ff);
-	--text-small: 400 0.75rem/1.6em var(--ff);
 	--transition: 0.2s ease-in-out;
 }
 
 :root {
-	--bg-dark: oklch(0.1 0 20);
-	--bg: oklch(0.15 0 20);
-	--bg-light: oklch(0.2 0 20);
-	--text: oklch(0.96 0 20);
-	--text-muted: oklch(0.76 0 20);
-	--highlight: oklch(0.5 0 20);
-	--border: oklch(0.4 0 20);
-	--border-muted: oklch(0.3 0 20);
-	--primary: oklch(0.76 0.1 20);
-	--secondary: oklch(0.76 0.1 200);
+	--bg-dark: oklch(0.1 0 287);
+	--bg: oklch(0.15 0 287);
+	--bg-light: oklch(0.2 0 287);
+	--text: oklch(0.96 0 287);
+	--text-muted: oklch(0.76 0 287);
+	--highlight: oklch(0.5 0 287);
+	--border: oklch(0.4 0 287);
+	--border-muted: oklch(0.3 0 287);
+	--primary: oklch(0.76 0.1 287);
+	--secondary: oklch(0.76 0.1 107);
 	--danger: oklch(0.7 0.05 30);
 	--warning: oklch(0.7 0.05 100);
 	--success: oklch(0.7 0.05 160);
 	--info: oklch(0.7 0.05 260);
+	--shadow-s: inset 0 1px 2px #ffffff30,
+		/* top highlight */
+		0 1px 2px #00000030,
+		/* dark shadow */
+		0 2px 4px #00000015;
+	/* soft shadow */
+	--shadow-m: inset 0 1px 2px #ffffff50,
+		/* top highlight */
+		0 2px 4px #00000030,
+		/* dark shadow */
+		0 4px 8px #00000015;
+	/* soft shadow */
+	--shadow-l: inset 0 1px 2px #ffffff70,
+		/* top highlight */
+		0 4px 6px #00000030,
+		/* dark shadow */
+		0 6px 10px #00000015;
+	/* soft shadow */
 }
 
-body.light {
-    --bg-dark: oklch(0.92 0 20);
-	--bg: oklch(0.96 0 20);
-	--bg-light: oklch(1 0 20);
-	--text: oklch(0.15 0 20);
-	--text-muted: oklch(0.4 0 20);
-	--highlight: oklch(1 0 20);
-	--border: oklch(0.6 0 20);
-	--border-muted: oklch(0.7 0 20);
-	--primary: oklch(0.4 0.1 20);
-	--secondary: oklch(0.4 0.1 200);
+body {
+	--bg-dark: oklch(0.92 0 287);
+	--bg: oklch(0.96 0 287);
+	--bg-light: oklch(1 0 287);
+	--text: oklch(0.15 0 287);
+	--text-muted: oklch(0.4 0 287);
+	--highlight: oklch(1 0 287);
+	--border: oklch(0.6 0 287);
+	--border-muted: oklch(0.7 0 287);
+	--primary: oklch(0.4 0.1 287);
+	--secondary: oklch(0.4 0.1 107);
 	--danger: oklch(0.5 0.05 30);
 	--warning: oklch(0.5 0.05 100);
 	--success: oklch(0.5 0.05 160);
@@ -96,19 +121,150 @@ body.light {
 }
 
 body {
-    margin: 0 auto;
-    max-width: 1200px;
-    background: var(--bg-dark);
-    color: var(--text-muted);
+	background: var(--bg-dark);
 }
 
 h1 {
-    font: var(--h1);
-    color: var(--text);
-    padding: 1.5rem;
+	font: var(--h1);
+	color: var(--text);
+	padding-bottom: 0.5rem;
 }
 
-div {
-    padding: 8px;
-	border: dashed 1px #fff;
+p {
+	font: var(--p);
+	color: var(--text);
+}
+
+.settings {
+	border-radius: 1rem;
+}
+
+#color {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	height: 5.25rem;
+	width: 5.25rem;
+	cursor: pointer;
+	background-color: var(--bg-light);
+	border: none;
+	padding: 0;
+	border-radius: 0.5rem;
+	box-shadow: var(--shadow-s);
+	transition: var(--transition);
+	outline: none;
+}
+
+#color::-webkit-color-swatch-wrapper {
+	padding: 0;
+}
+
+#color::-webkit-color-swatch {
+	border: none;
+	border-radius: inherit;
+}
+
+#color::-moz-color-swatch {
+	border: none;
+	border-radius: inherit;
+	box-shadow: none;
+}
+
+button {
+	cursor: pointer;
+	border: none;
+	background-color: var(--bg-light);
+	font: var(--p);
+	color: var(--text);
+	padding: 0.75rem;
+	min-width: 12rem;
+	min-height: 2.5rem;
+	border-radius: 0.5rem;
+	box-shadow: var(--shadow-s);
+	transition: var(--transition);
+	outline: none;
+}
+
+button:hover,
+#color:hover {
+	box-shadow: var(--shadow-l);
+	background-color: var(--highlight);
+	transform: scale(1.05);
+}
+
+button:active,
+#color:active {
+	transform: scale(0.95);
+	box-shadow: var(--shadow-l);
+	background-color: var(--highlight);
+}
+
+#grid-size {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	border: none;
+	appearance: none;
+	border-radius: 0.5rem;
+	cursor: pointer;
+	min-width: 12rem;
+	box-shadow: var(--shadow-m);
+	height: 0.5rem;
+	margin-top: -2px;
+	margin-bottom: 16px;
+}
+
+#grid-size::-webkit-slider-thumb {
+	appearance: none;
+	-webkit-appearance: none;
+	width: 1.25rem;
+	height: 1.25rem;
+	background: var(--text);
+	border-radius: 0.5rem;
+	box-shadow: var(--shadow-m);
+	transition: var(--transition);
+	border: none;
+}
+
+#grid-size::-moz-range-thumb {
+	appearance: none;
+	-moz-appearance: none;
+	width: 1.25rem;
+	height: 1.25rem;
+	background: var(--text);
+	border-radius: 0.5rem;
+	box-shadow: var(--shadow-m);
+	outline: none;
+	border: none;
+}
+
+#grid-size::-webkit-slider-thumb:active {
+	transform: scale(0.85);
+	box-shadow: var(--shadow-l);
+}
+
+#grid-size::-moz-range-thumb:active {
+	transform: scale(0.85);
+	box-shadow: var(--shadow-l);
+}
+
+/* Grid Styling*/
+
+.canvas {
+	box-shadow: var(--shadow-m);
+	border: 1px solid var(--border);
+}
+
+.cell {
+	background-color: var(--bg-light);
+	border: 1px solid var(--border-muted);
+}
+
+.github-mark {
+	max-width: 2rem;
+    transition: var(--transition);
+    margin-left: 0.5rem;
+}
+
+.github-mark:hover {
+    transform: scale(1.1);
 }

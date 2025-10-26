@@ -1,68 +1,59 @@
 <!doctype html>
 <html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Etch-a-Sketch</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Roboto:wght@100;300;400;500;700&family=Source+Sans+3&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-
-    <header>
-        <h1>Etch-a-Sketch</h1>
-    </header>
-
-    <div class="main-layout">
-
-        <main>
-
-        <div class="container">
-
-            <div class="settings">
-
-                <input type="color" id="color-picked">
-
-                <button id="color-mode">Color</button>
-                <button id="rainbow-mode">Rainbow</button>
-                <button id="shading-mode">Shading</button>
-                <button id="eraser-mode">Eraser</button>
-                <button id="clear-canvas">Clear</button>
-
-                <input type="range" id="grid-size">
-
-            </div>
-
-            <div class="canvas-container">
-
-                <div class="canvas">
-
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                
-                </div>
-
-            </div>
-
-        </div>
-            
-            <div class="footer">
-                <a href="https://github.com/karulll">"</a>
-            </div>
-
-        </main>
-
-    </div>
-
-    <script src="script.js" defer></script>
-</body>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+		<title>etch-a-sketch</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Roboto:wght@100;300;400;500;700&family=Source+Sans+3&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="style.css"/>
+	</head>
+	<body>
+		<div class="main-layout">
+			<main>
+				<div class="container">
+					<div class="settings">
+						<label for="color" class="color-swatch" aria-hidden="true"></label>
+						<input type="color" id="color" name="color" value="#0b0b0b">
+						<button id="color-mode">color</button>
+						<button id="rainbow-mode">rainbow</button>
+						<button id="shading-mode">shading</button>
+						<button id="eraser-mode">eraser</button>
+						<button id="clear-canvas">clear</button>
+						<p><span id="grid-size-label">16x16</span></p>
+						<input type="range" id="grid-size" name="grid-size" min="1" max="32" value="16">
+					</div>
+					<div class="canvas-container">
+						<h1>etch-a-sketch</h1>
+						<div class="canvas">
+							<div class="cell"></div>
+							<div class="cell"></div>
+							<div class="cell"></div>
+							<div class="cell"></div>
+							<div class="cell"></div>
+							<div class="cell"></div>
+							<div class="cell"></div>
+							<div class="cell"></div>
+							<div class="cell"></div>
+							<div class="cell"></div>
+							<div class="cell"></div>
+							<div class="cell"></div>
+							<div class="cell"></div>
+							<div class="cell"></div>
+							<div class="cell"></div>
+							<div class="cell"></div>
+						</div>
+						<div class="footer">
+                            <p>karulll</p>
+							<a target="_blank" href="https://github.com/karulll">
+							<img class="github-mark" src="github-mark.svg" alt="GitHub Mark">
+							</a>
+						</div>
+					</div>
+				</div>
+			</main>
+		</div>
+		<script src="script.js" defer></script>
+	</body>
 </html>
