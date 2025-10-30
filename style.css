@@ -1,4 +1,5 @@
 /* Layout*/
+
 html {
 	height: 100%;
 }
@@ -43,7 +44,7 @@ body {
 	width: 520px;
 	height: 520px;
 	display: grid;
-	grid-template: repeat(4, 1fr) / repeat(4, 1fr);
+	grid-template: repeat(1, 1fr) / repeat(1, 1fr);
 }
 
 .footer {
@@ -69,20 +70,20 @@ body {
 }
 
 :root {
-	--bg-dark: oklch(0.1 0 287);
-	--bg: oklch(0.15 0 287);
-	--bg-light: oklch(0.2 0 287);
-	--text: oklch(0.96 0 287);
-	--text-muted: oklch(0.76 0 287);
-	--highlight: oklch(0.5 0 287);
-	--border: oklch(0.4 0 287);
-	--border-muted: oklch(0.3 0 287);
-	--primary: oklch(0.76 0.1 287);
-	--secondary: oklch(0.76 0.1 107);
-	--danger: oklch(0.7 0.05 30);
-	--warning: oklch(0.7 0.05 100);
-	--success: oklch(0.7 0.05 160);
-	--info: oklch(0.7 0.05 260);
+	--bg-dark: oklch(0.92 0 287);
+	--bg: oklch(0.96 0 287);
+	--bg-light: oklch(1 0 287);
+	--text: oklch(0.15 0 287);
+	--text-muted: oklch(0.4 0 287);
+	--highlight: oklch(1 0 287);
+	--border: oklch(0.6 0 287);
+	--border-muted: oklch(0.7 0 287);
+	--primary: oklch(0.4 0.1 287);
+	--secondary: oklch(0.4 0.1 107);
+	--danger: oklch(0.5 0.05 30);
+	--warning: oklch(0.5 0.05 100);
+	--success: oklch(0.5 0.05 160);
+	--info: oklch(0.5 0.05 260);
 	--shadow-s: inset 0 1px 2px #ffffff30,
 		/* top highlight */
 		0 1px 2px #00000030,
@@ -101,23 +102,6 @@ body {
 		/* dark shadow */
 		0 6px 10px #00000015;
 	/* soft shadow */
-}
-
-body {
-	--bg-dark: oklch(0.92 0 287);
-	--bg: oklch(0.96 0 287);
-	--bg-light: oklch(1 0 287);
-	--text: oklch(0.15 0 287);
-	--text-muted: oklch(0.4 0 287);
-	--highlight: oklch(1 0 287);
-	--border: oklch(0.6 0 287);
-	--border-muted: oklch(0.7 0 287);
-	--primary: oklch(0.4 0.1 287);
-	--secondary: oklch(0.4 0.1 107);
-	--danger: oklch(0.5 0.05 30);
-	--warning: oklch(0.5 0.05 100);
-	--success: oklch(0.5 0.05 160);
-	--info: oklch(0.5 0.05 260);
 }
 
 body {
@@ -199,6 +183,8 @@ button:active,
 	background-color: var(--highlight);
 }
 
+/* Grid Size Slider Styling*/
+
 #grid-size {
 	-webkit-appearance: none;
 	-moz-appearance: none;
@@ -242,9 +228,22 @@ button:active,
 	box-shadow: var(--shadow-l);
 }
 
+#grid-size::-moz-range-thumb:hover {
+	transform: scale(1.05);
+	box-shadow: var(--shadow-l);
+}
+
+#grid-size::-webkit-slider-thumb:hover {
+	transform: scale(1.05);
+	box-shadow: var(--shadow-l);
+}
+
 #grid-size::-moz-range-thumb:active {
 	transform: scale(0.85);
-	box-shadow: var(--shadow-l);
+}
+
+#grid-size::-webkit-slider-thumb:active {
+	transform: scale(0.85);
 }
 
 /* Grid Styling*/
