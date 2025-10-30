@@ -247,6 +247,7 @@ button:active,
 	background: var(--text);
 	border-radius: 0.5rem;
 	box-shadow: var(--shadow-m);
+	transition: var(--transition);
 	outline: none;
 	border: none;
 }
