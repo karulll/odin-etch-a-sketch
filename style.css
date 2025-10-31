@@ -20,16 +20,37 @@ body {
 
 .container {
 	display: flex;
-	flex-wrap: wrap;
+	/*flex-wrap: wrap;*/
 }
 
 .settings {
 	display: flex;
 	flex-direction: column;
 	flex: 1 1 0;
-	gap: 1rem;
 	place-items: center;
 	justify-content: center;
+}
+
+.settings-container {
+	display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr 0.75fr 0.75fr 0.75fr 0.25fr 0.4fr;
+	gap: 0 1rem;
+	place-items: center;
+	justify-content: center;
+}
+
+#color {
+	margin-bottom: 8px;
+	grid-column: span 2 / span 2;
+}
+
+#grid-value {
+	grid-column: span 2 / span 2;
+}
+
+#grid-size {
+	grid-column: span 2 / span 2;
 }
 
 .canvas-container {
@@ -63,10 +84,8 @@ body {
 		height: auto;
 	}
 	.settings {
-		display: grid;
-		gap: 0;
-		grid-template-columns: repeat(2, 1fr);
-		grid-template-rows: repeat(3, 1fr);
+			place-items: center;
+			justify-content: center;
 		}
 
 	.settings > label {
@@ -209,7 +228,7 @@ button {
 	font: var(--p);
 	color: var(--text);
 	padding: 0.75rem;
-	min-width: 12rem;
+	width: 5rem;
 	min-height: 2.5rem;
 	border-radius: 0.5rem;
 	box-shadow: var(--shadow-s);
@@ -240,11 +259,10 @@ button:active,
 	appearance: none;
 	border-radius: 0.5rem;
 	cursor: pointer;
-	min-width: 12rem;
+	min-width: 11rem;
 	box-shadow: var(--shadow-m);
 	height: 0.5rem;
 	margin-top: -2px;
-	margin-bottom: 16px;
 }
 
 #grid-size::-webkit-slider-thumb {
