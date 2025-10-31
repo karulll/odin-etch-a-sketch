@@ -133,7 +133,7 @@ body {
 	--ff: "Manrope", sans-serif;
 	--h1: 700 2rem var(--ff);
 	--p: 400 1rem/1.6em var(--ff);
-	--transition: 0.2s ease-in-out;
+	--transition: 0.1s ease-in-out;
 }
 
 :root {
@@ -242,7 +242,6 @@ button {
 button:hover,
 #color:hover {
 	box-shadow: var(--shadow-l);
-	background-color: var(--highlight);
 	transform: scale(1.05);
 }
 
@@ -250,7 +249,20 @@ button:active,
 #color:active {
 	transform: scale(0.95);
 	box-shadow: var(--shadow-l);
-	background-color: var(--highlight);
+	--bg-light: oklch(0.2 0 268);
+	--text: oklch(0.96 0 268);
+}
+
+#color-mode.active,
+#picker-mode.active,
+#rainbow-mode.active,
+#shading-mode.active,
+#border-toggle.active {
+	transition: var(--transition);
+	--bg-light: oklch(0.2 0 268);
+	--text: oklch(0.96 0 268);
+	box-shadow: var(--shadow-l);
+	transform: scale(1.05);
 }
 
 .trash-icon {
