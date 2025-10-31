@@ -265,6 +265,14 @@ button:active,
 	transform: scale(1.05);
 }
 
+#color-mode.active:active,
+#picker-mode.active:active,
+#rainbow-mode.active:active,
+#shading-mode.active:active,
+#border-toggle.active:active {
+	transform: scale(0.95);
+}
+
 .trash-icon {
 	color: var(--text);
 }
