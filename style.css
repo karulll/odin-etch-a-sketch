@@ -222,6 +222,7 @@ p {
 }
 
 button {
+	display: flex;
 	cursor: pointer;
 	border: none;
 	background-color: var(--bg-light);
@@ -234,6 +235,8 @@ button {
 	box-shadow: var(--shadow-s);
 	transition: var(--transition);
 	outline: none;
+	place-items: center;
+	justify-content: center;
 }
 
 button:hover,
@@ -248,6 +251,10 @@ button:active,
 	transform: scale(0.95);
 	box-shadow: var(--shadow-l);
 	background-color: var(--highlight);
+}
+
+.trash-icon {
+	color: var(--text);
 }
 
 /* Grid Size Slider Styling*/
