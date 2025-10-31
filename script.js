@@ -44,10 +44,10 @@ function setGridValue(size) {
 }
 
 function setActiveMode(value) {
-    if(value != 6) {
+    if(value < 5) {
         [   colorMode, pickerMode, 
-            rainbowMode, shadingMode, 
-            borderToggle, clearCanvas
+            rainbowMode, shadingMode,
+            clearCanvas
         ].forEach(e => e.classList.remove("active"));
     }
     
@@ -65,7 +65,11 @@ function setActiveMode(value) {
             shadingMode.classList.add("active");
             break;
         case "5":
-            borderToggle.classList.add("active");
+            if (borderToggle.classList.contains("active")) {
+                borderToggle.classList.remove("active");
+            } else {
+                borderToggle.classList.add("active");
+            }
             break;
         case 6:
             console.log("clear");
