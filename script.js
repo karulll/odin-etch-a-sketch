@@ -87,6 +87,7 @@ inputGridValue.addEventListener("input", setGridDisplay);
 
 inputGridValue.addEventListener("change", setGridValue);
 inputGridValue.addEventListener("click", setGridValue);
+inputGridValue.addEventListener("touchend", setGridValue);
 
 function setGridDisplay() {
     const size = Math.floor(Number(inputGridValue.value));
