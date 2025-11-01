@@ -64,15 +64,19 @@ function setCellColor(cell, isMouseDown) {
     }
 }
 
-inputGridValue.addEventListener("input", setGridValue);
+inputGridValue.addEventListener("input", setGridDisplay);
 
-function setGridValue(size) {
-    size = Math.round(Number(inputGridValue.value));
+inputGridValue.addEventListener("change", setGridValue);
+
+function setGridDisplay() {
+    const size = Math.round(Number(inputGridValue.value));
     gridValue.textContent = size + "x" + size;
-
-    createGridCells(size);
 }
 
+function setGridValue() {
+    const size = Math.round(Number(inputGridValue.value));
+    createGridCells(size);
+}
 
 // button listeners
 
