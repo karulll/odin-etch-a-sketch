@@ -13,11 +13,17 @@ const borderToggle = document.getElementById("border-toggle");
 const clearCanvas = document.getElementById("clear-canvas"); 
 
 let defaultSize = 32;
+let currentSize = defaultSize;
+let pendingSize = defaultSize;
 let mouseIsDown = false;
 
 createGridCells(defaultSize);
+inputGridValue.value = defaultSize;
+gridValue.textContent = defaultSize + "x" + defaultSize;
 
 document.body.onmouseup = () => mouseIsDown = false;
+document.body.ontouchend = () => mouseIsDown = false;
+document.body.ontouchcancel = () => mouseIsDown = false;
 
 function createGridCells(size) {
     document.querySelectorAll('.cell').forEach(e => e.remove());
@@ -32,6 +38,19 @@ function createGridCells(size) {
         cell.style.backgroundColor = "#ffffff";
         cell.addEventListener("mouseover", () => setCellColor(cell, mouseIsDown));
         cell.addEventListener("mousedown", () => {mouseIsDown = true; setCellColor(cell, mouseIsDown)});
+        cell.addEventListener("touchstart", (e) => {
+            e.preventDefault();
+            mouseIsDown = true;
+            setCellColor(cell, mouseIsDown);
+        });
+        cell.addEventListener("touchmove", (e) => {
+            e.preventDefault();
+            const touch = e.touches[0];
+            const targetCell = document.elementFromPoint(touch.clientX, touch.clientY);
+            if (targetCell && targetCell.classList.contains("cell")) {
+                setCellColor(targetCell, mouseIsDown);
+            }
+        });
     }
 
     const cells = document.getElementsByClassName("cell");
