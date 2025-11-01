@@ -100,12 +100,18 @@ function setGridValue() {
 
 // button listeners
 
-colorMode.addEventListener("click", () => setActiveMode(colorMode.value));
-eraserMode.addEventListener("click", () => setActiveMode(eraserMode.value));
-rainbowMode.addEventListener("click", () => setActiveMode(rainbowMode.value));
-pickerMode.addEventListener("click", () => setActiveMode(pickerMode.value));
-borderToggle.addEventListener("click", () => setActiveMode(borderToggle.value));
-clearCanvas.addEventListener("click", () => setActiveMode(clearCanvas.value));
+function setPressListener(btn) {
+    btn.addEventListener("click", () => setActiveMode(btn.value));
+    btn.addEventListener("touchstart", (e) => {e.preventDefault(); setActiveMode(btn.value)});
+}
+
+// set to buttons
+setPressListener(colorMode);
+setPressListener(eraserMode);
+setPressListener(rainbowMode);
+setPressListener(pickerMode);
+setPressListener(borderToggle);
+setPressListener(clearCanvas);
 
 
 function setActiveMode(value) {
