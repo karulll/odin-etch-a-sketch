@@ -5,12 +5,12 @@ const gridValue = document.getElementById("grid-value");
 const color = document.getElementById("color");
 const cell = document.getElementsByClassName("cell");
 
-let size = 16;
+let defaultSize = 16;
 let mouseIsDown = false;
 
-createGridCells(size);
+createGridCells(defaultSize);
 
-canvas.onmouseup = () => mouseIsDown = false;
+document.body.onmouseup = () => mouseIsDown = false;
 
 function createGridCells(size) {
     document.querySelectorAll('.cell').forEach(e => e.remove());
@@ -28,7 +28,11 @@ function createGridCells(size) {
 function setCellColor(cell, isMouseDown) {
     console.log(isMouseDown);
     if(isMouseDown) {
-        cell.style.backgroundColor = "red";
+        const colorPicked = color.value;
+        if(colorMode.classList.contains("active")) {
+            cell.style.backgroundColor = colorPicked;
+        }
+
     }
 }
 
@@ -47,7 +51,7 @@ function setGridValue(size) {
 
 // buttons
 const colorMode = document.getElementById("color-mode"); 
-const pickerMode = document.getElementById("picker-mode"); 
+const eraserMode = document.getElementById("eraser-mode"); 
 const rainbowMode = document.getElementById("rainbow-mode"); 
 const shadingMode = document.getElementById("shading-mode"); 
 const borderToggle = document.getElementById("border-toggle"); 
@@ -55,7 +59,7 @@ const clearCanvas = document.getElementById("clear-canvas");
 let currentActive = 0;
 
 colorMode.addEventListener("click", () => setActiveMode(colorMode.value));
-pickerMode.addEventListener("click", () => setActiveMode(pickerMode.value));
+eraserMode.addEventListener("click", () => setActiveMode(eraserMode.value));
 rainbowMode.addEventListener("click", () => setActiveMode(rainbowMode.value));
 shadingMode.addEventListener("click", () => setActiveMode(shadingMode.value));
 borderToggle.addEventListener("click", () => setActiveMode(borderToggle.value));
@@ -64,7 +68,7 @@ clearCanvas.addEventListener("click", () => setActiveMode(clearCanvas.value));
 
 function setActiveMode(value) {
     if(value < 5) {
-        [   colorMode, pickerMode, 
+        [   colorMode, eraserMode, 
             rainbowMode, shadingMode,
             clearCanvas
         ].forEach(e => e.classList.remove("active"));
@@ -75,7 +79,7 @@ function setActiveMode(value) {
             colorMode.classList.add("active");
             break;
         case "2":
-            pickerMode.classList.add("active");
+            eraserMode.classList.add("active");
             break;
         case "3":
             rainbowMode.classList.add("active");
@@ -86,13 +90,14 @@ function setActiveMode(value) {
         case "5":
             if (borderToggle.classList.contains("active")) {
                 borderToggle.classList.remove("active");
+                Array.from(cell).forEach(e => e.style.borderStyle = "none");
             } else {
                 borderToggle.classList.add("active");
+                Array.from(cell).forEach(e => e.style.borderStyle = "solid");
             }
             break;
-        case 6:
-            console.log("clear");
+        default: // clear
+                Array.from(cell).forEach(e => e.style.backgroundColor = "var(--bg-light)");
             break;
     }
-    console.log(value);
 }

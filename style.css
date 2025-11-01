@@ -355,7 +355,7 @@ button:active,
 
 .cell {
 	background-color: var(--bg-light);
-	border: 1px solid var(--border-muted);
+	border: 1px none var(--border-muted);
 }
 
 .github-mark {
