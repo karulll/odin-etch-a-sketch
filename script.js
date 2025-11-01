@@ -3,7 +3,6 @@ const canvas = document.querySelector(".canvas");
 const inputGridValue = document.getElementById("grid-size");
 const gridValue = document.getElementById("grid-value"); 
 const color = document.getElementById("color");
-const cell = document.getElementsByClassName("cell");
 
 // buttons
 const colorMode = document.getElementById("color-mode"); 
@@ -35,15 +34,15 @@ function createGridCells(size) {
         cell.addEventListener("mousedown", () => {mouseIsDown = true; setCellColor(cell, mouseIsDown)});
     }
 
+    const cells = document.getElementsByClassName("cell");
     if (borderToggle.classList.contains("active")) {
-            Array.from(cell).forEach(e => e.style.borderStyle = "solid");
+            Array.from(cells).forEach(e => e.style.borderStyle = "solid");
     } else {
-            Array.from(cell).forEach(e => e.style.borderStyle = "none");
+            Array.from(cells).forEach(e => e.style.borderStyle = "none");
     }
 }
 
 function setCellColor(cell, isMouseDown) {
-    console.log(isMouseDown);
     if(isMouseDown) {
 
         if(pickerMode.classList.contains("active")) {
@@ -59,8 +58,8 @@ function setCellColor(cell, isMouseDown) {
             const r = Math.floor(Math.random() * 255);
             const g = Math.floor(Math.random() * 255);
             const b = Math.floor(Math.random() * 255);
-            color.value = "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
-            cell.style.backgroundColor = color.value;
+            const rainbowColor = "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+            cell.style.backgroundColor = rainbowColor;
         }
     }
 }
@@ -76,7 +75,6 @@ function setGridValue(size) {
 
 
 // button listeners
-let currentActive = 0;
 
 colorMode.addEventListener("click", () => setActiveMode(colorMode.value));
 eraserMode.addEventListener("click", () => setActiveMode(eraserMode.value));
@@ -108,16 +106,18 @@ function setActiveMode(value) {
             pickerMode.classList.add("active");
             break;
         case "5":
+            const cells = document.getElementsByClassName("cell");
             if (borderToggle.classList.contains("active")) {
                 borderToggle.classList.remove("active");
-                Array.from(cell).forEach(e => e.style.borderStyle = "none");
+                Array.from(cells).forEach(e => e.style.borderStyle = "none");
             } else {
                 borderToggle.classList.add("active");
-                Array.from(cell).forEach(e => e.style.borderStyle = "solid");
+                Array.from(cells).forEach(e => e.style.borderStyle = "solid");
             }
             break;
         default: // clear
-                Array.from(cell).forEach(e => e.style.backgroundColor = "var(--bg-light)");
+            const clearCells = document.getElementsByClassName("cell");
+            Array.from(clearCells).forEach(e => e.style.backgroundColor = "#ffffffff");
             break;
     }
 }

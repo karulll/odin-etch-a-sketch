@@ -133,10 +133,7 @@ body {
 	--ff: "Manrope", sans-serif;
 	--h1: 700 2rem var(--ff);
 	--p: 400 1rem/1.6em var(--ff);
-	--transition: 0.1s ease-in-out;
-}
-
-:root {
+	--transition: 0.12s ease-in-out;
 	--bg-dark: oklch(0.92 0 287);
 	--bg: oklch(0.96 0 287);
 	--bg-light: oklch(1 0 287);
@@ -177,7 +174,6 @@ body {
   	-moz-user-select: none;
   	-ms-user-select: none;
   	user-select: none;
-  	-webkit-user-drag: none;
   	-moz-user-drag: none;
 }
 
@@ -262,7 +258,7 @@ button:active,
 #color-mode.active,
 #eraser-mode.active,
 #rainbow-mode.active,
-#shading-mode.active,
+#picker-mode.active,
 #border-toggle.active {
 	transition: var(--transition);
 	--bg-light: oklch(0.2 0 268);
@@ -274,7 +270,7 @@ button:active,
 #color-mode.active:active,
 #eraser-mode.active:active,
 #rainbow-mode.active:active,
-#shading-mode.active:active,
+#picker-mode.active:active,
 #border-toggle.active:active {
 	transform: scale(0.95);
 }
