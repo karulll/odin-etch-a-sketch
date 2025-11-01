@@ -2,9 +2,16 @@
 const canvas = document.querySelector(".canvas");
 const inputGridValue = document.getElementById("grid-size");
 const gridValue = document.getElementById("grid-value"); 
+const color = document.getElementById("color");
+const cell = document.getElementsByClassName("cell");
 
 let size = 16;
+let mouseIsDown = false;
+
 createGridCells(size);
+
+canvas.onmousedown = () => mouseIsDown = true;
+canvas.onmouseup = () => mouseIsDown = false;
 
 function createGridCells(size) {
     document.querySelectorAll('.cell').forEach(e => e.remove());
@@ -14,6 +21,15 @@ function createGridCells(size) {
         cell.id = `${i}`;
         canvas.appendChild(cell);
         console.log(i);
+        cell.addEventListener("mouseover", () => setCellColor(cell, mouseIsDown));
+        cell.addEventListener("mousedown", () => setCellColor(cell, mouseIsDown));
+    }
+}
+
+function setCellColor(cell, isMouseDown) {
+    console.log(isMouseDown);
+    if(isMouseDown) {
+        cell.style.backgroundColor = "red";
     }
 }
 
@@ -27,27 +43,6 @@ function setGridValue(size) {
     canvas.style.gridTemplateRows = `repeat(${size}, 1fr)`;
 
     createGridCells(size);
-}
-
-// color input
-const color = document.getElementById("color");
-const cell = document.getElementsByClassName("cell");
-let mouseIsDown = false;
-
-canvas.addEventListener("mousedown", () => {addCellListener(); mouseIsDown = true});
-canvas.addEventListener("mouseup", () => {addCellListener(); mouseIsDown = false});
-
-function addCellListener () {
-    Array.from(cell).forEach(e => {
-        e.addEventListener("mouseover", () => setCellColor(e, mouseIsDown));
-    });
-}
-
-function setCellColor(cell, isMouseDown) {
-    if(isMouseDown == true) {
-        console.log("conf");
-        cell.style.backgroundColor = "red";
-    }
 }
 
 
