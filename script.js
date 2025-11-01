@@ -1,26 +1,10 @@
-// start 
+// canvas
 const canvas = document.querySelector(".canvas");
 const inputGridValue = document.getElementById("grid-size");
 const gridValue = document.getElementById("grid-value"); 
-const colorMode = document.getElementById("color-mode"); 
-const pickerMode = document.getElementById("picker-mode"); 
-const rainbowMode = document.getElementById("rainbow-mode"); 
-const shadingMode = document.getElementById("shading-mode"); 
-const borderToggle = document.getElementById("border-toggle"); 
-const clearCanvas = document.getElementById("clear-canvas"); 
-let currentActive = 0;
 
 let size = 16;
 createGridCells(size);
-
-colorMode.addEventListener("click", ()=> setActiveMode(colorMode.value));
-pickerMode.addEventListener("click", ()=> setActiveMode(pickerMode.value));
-rainbowMode.addEventListener("click", ()=> setActiveMode(rainbowMode.value));
-shadingMode.addEventListener("click", ()=> setActiveMode(shadingMode.value));
-borderToggle.addEventListener("click", ()=> setActiveMode(borderToggle.value));
-clearCanvas.addEventListener("click", ()=> setActiveMode(clearCanvas.value));
-
-inputGridValue.addEventListener("input", setGridValue);
 
 function createGridCells(size) {
     document.querySelectorAll('.cell').forEach(e => e.remove());
@@ -33,6 +17,8 @@ function createGridCells(size) {
     }
 }
 
+inputGridValue.addEventListener("input", setGridValue);
+
 function setGridValue(size) {
     size = Math.round(Number(inputGridValue.value));
     gridValue.textContent = size + "x" + size;
@@ -42,6 +28,45 @@ function setGridValue(size) {
 
     createGridCells(size);
 }
+
+// color input
+const color = document.getElementById("color");
+const cell = document.getElementsByClassName("cell");
+let mouseIsDown = false;
+
+canvas.addEventListener("mousedown", () => {addCellListener(); mouseIsDown = true});
+canvas.addEventListener("mouseup", () => {addCellListener(); mouseIsDown = false});
+
+function addCellListener () {
+    Array.from(cell).forEach(e => {
+        e.addEventListener("mouseover", () => setCellColor(e, mouseIsDown));
+    });
+}
+
+function setCellColor(cell, isMouseDown) {
+    if(isMouseDown == true) {
+        console.log("conf");
+        cell.style.backgroundColor = "red";
+    }
+}
+
+
+// buttons
+const colorMode = document.getElementById("color-mode"); 
+const pickerMode = document.getElementById("picker-mode"); 
+const rainbowMode = document.getElementById("rainbow-mode"); 
+const shadingMode = document.getElementById("shading-mode"); 
+const borderToggle = document.getElementById("border-toggle"); 
+const clearCanvas = document.getElementById("clear-canvas"); 
+let currentActive = 0;
+
+colorMode.addEventListener("click", () => setActiveMode(colorMode.value));
+pickerMode.addEventListener("click", () => setActiveMode(pickerMode.value));
+rainbowMode.addEventListener("click", () => setActiveMode(rainbowMode.value));
+shadingMode.addEventListener("click", () => setActiveMode(shadingMode.value));
+borderToggle.addEventListener("click", () => setActiveMode(borderToggle.value));
+clearCanvas.addEventListener("click", () => setActiveMode(clearCanvas.value));
+
 
 function setActiveMode(value) {
     if(value < 5) {
