@@ -5,7 +5,15 @@ const gridValue = document.getElementById("grid-value");
 const color = document.getElementById("color");
 const cell = document.getElementsByClassName("cell");
 
-let defaultSize = 16;
+// buttons
+const colorMode = document.getElementById("color-mode"); 
+const eraserMode = document.getElementById("eraser-mode"); 
+const rainbowMode = document.getElementById("rainbow-mode"); 
+const shadingMode = document.getElementById("shading-mode"); 
+const borderToggle = document.getElementById("border-toggle"); 
+const clearCanvas = document.getElementById("clear-canvas"); 
+
+let defaultSize = 32;
 let mouseIsDown = false;
 
 createGridCells(defaultSize);
@@ -14,14 +22,23 @@ document.body.onmouseup = () => mouseIsDown = false;
 
 function createGridCells(size) {
     document.querySelectorAll('.cell').forEach(e => e.remove());
+
+    canvas.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+    canvas.style.gridTemplateRows = `repeat(${size}, 1fr)`;
+
     for(let i = 1; i <= size * size; i++) {
         const cell = document.createElement("div");
         cell.className = "cell";
         cell.id = `${i}`;
         canvas.appendChild(cell);
-        console.log(i);
         cell.addEventListener("mouseover", () => setCellColor(cell, mouseIsDown));
         cell.addEventListener("mousedown", () => {mouseIsDown = true; setCellColor(cell, mouseIsDown)});
+    }
+
+    if (borderToggle.classList.contains("active")) {
+            Array.from(cell).forEach(e => e.style.borderStyle = "solid");
+    } else {
+            Array.from(cell).forEach(e => e.style.borderStyle = "none");
     }
 }
 
@@ -31,6 +48,8 @@ function setCellColor(cell, isMouseDown) {
         const colorPicked = color.value;
         if(colorMode.classList.contains("active")) {
             cell.style.backgroundColor = colorPicked;
+        } else if(eraserMode.classList.contains("active")) {
+            cell.style.backgroundColor = "var(--bg-light)";
         }
 
     }
@@ -42,20 +61,11 @@ function setGridValue(size) {
     size = Math.round(Number(inputGridValue.value));
     gridValue.textContent = size + "x" + size;
 
-    canvas.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
-    canvas.style.gridTemplateRows = `repeat(${size}, 1fr)`;
-
     createGridCells(size);
 }
 
 
-// buttons
-const colorMode = document.getElementById("color-mode"); 
-const eraserMode = document.getElementById("eraser-mode"); 
-const rainbowMode = document.getElementById("rainbow-mode"); 
-const shadingMode = document.getElementById("shading-mode"); 
-const borderToggle = document.getElementById("border-toggle"); 
-const clearCanvas = document.getElementById("clear-canvas"); 
+// button listeners
 let currentActive = 0;
 
 colorMode.addEventListener("click", () => setActiveMode(colorMode.value));

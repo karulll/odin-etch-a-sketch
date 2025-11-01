@@ -1,5 +1,4 @@
 /* Layout*/
-
 html {
 	height: 100%;
 }
@@ -67,6 +66,7 @@ body {
 	display: grid;
 	grid-template-columns: repeat(16, 1fr);
 	grid-template-rows: repeat(16, 1fr);
+	cursor: crosshair;
 }
 
 .footer {
@@ -260,7 +260,7 @@ button:active,
 }
 
 #color-mode.active,
-#picker-mode.active,
+#eraser-mode.active,
 #rainbow-mode.active,
 #shading-mode.active,
 #border-toggle.active {
@@ -272,7 +272,7 @@ button:active,
 }
 
 #color-mode.active:active,
-#picker-mode.active:active,
+#eraser-mode.active:active,
 #rainbow-mode.active:active,
 #shading-mode.active:active,
 #border-toggle.active:active {
