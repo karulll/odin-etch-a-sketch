@@ -69,12 +69,12 @@ inputGridValue.addEventListener("input", setGridDisplay);
 inputGridValue.addEventListener("change", setGridValue);
 
 function setGridDisplay() {
-    const size = Math.round(Number(inputGridValue.value));
+    const size = Math.floor(Number(inputGridValue.value));
     gridValue.textContent = size + "x" + size;
 }
 
 function setGridValue() {
-    const size = Math.round(Number(inputGridValue.value));
+    const size = Math.floor(Number(inputGridValue.value));
     createGridCells(size);
 }
 
