@@ -10,7 +10,6 @@ let mouseIsDown = false;
 
 createGridCells(size);
 
-canvas.onmousedown = () => mouseIsDown = true;
 canvas.onmouseup = () => mouseIsDown = false;
 
 function createGridCells(size) {
@@ -22,7 +21,7 @@ function createGridCells(size) {
         canvas.appendChild(cell);
         console.log(i);
         cell.addEventListener("mouseover", () => setCellColor(cell, mouseIsDown));
-        cell.addEventListener("mousedown", () => setCellColor(cell, mouseIsDown));
+        cell.addEventListener("mousedown", () => {mouseIsDown = true; setCellColor(cell, mouseIsDown)});
     }
 }
 
